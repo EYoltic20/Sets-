@@ -1,6 +1,5 @@
 # Emilio Yoltic Martinez Gutierrez 
 import re
-import os
 
 # Desplegamos las opciones del menu
 def menu():
@@ -10,7 +9,7 @@ def menu():
         3.- Determine Relation
         4.- Exit
     """)
-    option = str(input("Insert the option "))
+    option = input("Insert the option ")
     return option
 
 
@@ -124,8 +123,9 @@ def check_if_it_is_symetric(set):
     res= False
     Asimple,Bsimple=simplyfy(A,B)
     print(Asimple,"   ",Bsimple)
-    # if ((Asimple[1%len(Asimple)],Bsimple[2%len(Bsimple)])in newSet and (Asimple[1],Bsimple[2]) in newSet):
-    #     return True
+    for i in range(0,len(Asimple),2):
+        if ((Asimple[i%len(Asimple)],Bsimple[i+1%len(Bsimple)])in newSet and (Asimple[i+1%len(Bsimple)],Bsimple[i%len(Bsimple)]) in newSet):
+            return True
 
     return res
 
@@ -139,9 +139,7 @@ def determinate():
 
 
 def main():
-    state= "Everthing good"
     while True:
-        print(state)
         opcion = menu()
         if(opcion =="1"):
             multiply()
@@ -150,11 +148,10 @@ def main():
         if(opcion == "3"):
             determinate() 
         if (opcion =="4"):
-            return
+            return 
         else:
-            state="Not valid Option"
             print("Opcion no valida ")
-        os.system("clear")
+            
 
 if __name__ == '__main__':
     main()
